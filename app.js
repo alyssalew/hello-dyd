@@ -26,7 +26,7 @@ http.get(melanomatest, function(res) {
 });
 
 app.get('/', function(req, res){
-  res.send('Hello DYD?');
+  res.send('<html> <body> <i>Hello DYD?</i> <br> <b> From Mauritius</b> </body></html> ');
 });
 app.listen(3000);
 console.log('Listening on port 3000');
