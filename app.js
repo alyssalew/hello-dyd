@@ -14,19 +14,22 @@ var melanomatest = {
 };
 
 http.get(lungtest, function(res) {
-  console.log("Yes, Lung Test!: " + res.statusCode);
+  console.log("Hello, Lung Test!: " + res.statusCode);
 }).on('error', function(e) {
-  console.log("Got error: " + e.message);
+  console.log("Error on Lung Test: " + e.message);
 });
 
 http.get(melanomatest, function(res) {
-  console.log("Yes, Melanoma Test!: " + res.statusCode);
+  console.log("Hello, Melanoma Test!: " + res.statusCode);
 }).on('error', function(e) {
-  console.log("Got error: " + e.message);
+  console.log("Error on Lung Test: " + e.message);
 });
 
+
+
 app.get('/', function(req, res){
-  res.send('<html> <body> <i>Hello DYD?</i> <br> <b> From Mauritius</b> </body></html> ');
+  res.send('<html> <head> <hl>Hello DYD?</hl> </head> <br> <body> <pre>Hello. Welcome to Hello DYD? This site will let you know whether the DYD services are availble.</pre> </body> </html>');
 });
+
 app.listen(3000);
 console.log('Listening on port 3000');
