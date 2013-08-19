@@ -1,9 +1,20 @@
 {
   "name": "hello-dyd",
-  "description": "hello-dyd app",
-  "version": "0.0.1",
-  "private": true,
+  "version": "0.0.0",
+  "description": "Hello DYD? App",
   "dependencies": {
-    "express": "3.3.5"
+    "express": "~3.3.5",
+    "nodemailer": "~0.5.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alyssalew/hello-dyd.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README",
+  "gitHead": "01a00915dcac728f83e87f432e61b6b095c4ecf9",
+  "bugs": {
+    "url": "https://github.com/alyssalew/hello-dyd/issues"
   }
 }
