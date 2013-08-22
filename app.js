@@ -13,7 +13,7 @@ var theWebPage="";
 //[3]: path
 //[4]: HTTP status code
 //[5]: Error message
-var services = [
+var services = [ //defines the array 'services' as many arrays
   ['Lung Test','lungtest.dyd.cancercommons.org', 443, '/index.html'],
   ['Melanoma Test','melanomatest.dyd.cancercommons.org', 443,'/index.html'],
   ['Lung Live','lung.dyd.cancercommons.org', 443, '/index.html'],
@@ -28,7 +28,7 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
    }
 });
 
-function addServiceText(theservice)
+function addServiceText(theservice) //this specifies what service text should be included on the webpage
 {
   theWebPage += "<br>";
   theWebPage += "The " + theservice[0] + " status code is <b>" + theservice[4] + "</b>" ;
@@ -36,13 +36,13 @@ function addServiceText(theservice)
   theWebPage += "The " + theservice[0] + " error message is " + theservice[5] ;
   theWebPage += "<br>";
 }
-function addTimeStamp()
+function addTimeStamp() //this defines what time text should included on the webpage
 {
   theWebPage += "<br>";
   theWebPage += '<br> Last test done at : ' +  hours + ':' + minutes + ':' + seconds + ' on ' +  month + '/' + day + '/' + year + '</body> </html>'
 }
 
-app.get('/', function(req, res){
+app.get('/', function(req, res){ //shows on webpage: intro text, each service's text, timestamp
   theWebPage = "<html> <head> <hl>Hello DYD?</hl> </head><br> <body> <pre>Hello. Welcome to Hello DYD? This site will let you know whether the DYD services are availble.</pre> <br>";
   services.forEach(addServiceText);
   addTimeStamp();
@@ -55,10 +55,10 @@ console.log('Listening on port 3000');
 //loop starts here: it gets run every 60 seconds
 function log(theservice)
 {
-  console.log("Hello, " + theservice[0] + "!");
+  console.log("Hello, " + theservice[0] + "!"); //prints the service name to the console
 }
 
-function tickle(theservice)
+function tickle(theservice) //when a service is down: sends email, send error code to console
 {
   params = { host: theservice[1], 
              port: theservice[2],
@@ -86,7 +86,7 @@ function tickle(theservice)
    });
  });
 }
-function setTime()
+function setTime() //gets the current date and time 
 {
  var currentTime = new Date();
  month = currentTime.getMonth() + 1;
@@ -101,7 +101,7 @@ function setTime()
  seconds = currentTime.getSeconds();
 }
 
-function checkHosts()
+function checkHosts() //checks all the services
 {
  console.log('Entered CheckHosts');
  setTime();
