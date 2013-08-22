@@ -19,6 +19,8 @@ var services = [ //defines the array 'services' as many arrays
   ['Lung Live','lung.dyd.cancercommons.org', 443, '/index.html'],
   ['Melanoma Live','melanoma.dyd.cancercommons.org', 443 ,'/index.html']
 ];
+var recipients= ['alyssalew2@gmail.com', ];//defines who will recive email alerts
+
 var nodemailer = require("nodemailer");
 var smtpTransport = nodemailer.createTransport("SMTP",{
    service: "Gmail",
@@ -66,7 +68,7 @@ function tickle(theservice) //when a service is down: sends email, send error co
            };
   var mailOptions = {
     from: "Hello DYD!", // sender address
-    to: "alyssalew2@gmail.com", // list of receivers
+    to: recipients, // list of receivers
     subject: "Alert from " + theservice[0], // Subject line
     html: "<p>The service <b>" + theservice[0] + "</b> might be down! Oh no!", // html body
     generateTextFromHTML: true,
