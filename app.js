@@ -31,19 +31,19 @@ var smtpTransport = nodemailer.createTransport("SMTP",{
 function addServiceText(theservice) //this specifies what service text should be included on the webpage
 {
   theWebPage += "<br>";
-  theWebPage += "The " + theservice[0] + " status code is <b>" + theservice[4] + "</b>" ;
+  theWebPage += "The " + theservice[0] + " status code is <b><font color=#32CD32>" + theservice[4] + "</font></b>" ;
   theWebPage += "<br>";
-  theWebPage += "The " + theservice[0] + " error message is " + theservice[5] ;
+  theWebPage += "The " + theservice[0] + " error message is <b><font color= #B22222>" + theservice[5] + "</font></b>" ;
   theWebPage += "<br>";
 }
 function addTimeStamp() //this defines what time text should included on the webpage
 {
   theWebPage += "<br>";
-  theWebPage += '<br> Last test done at : ' +  hours + ':' + minutes + ':' + seconds + ' on ' +  month + '/' + day + '/' + year + '</body> </html>'
+  theWebPage += '<br> Last test done at: <i>' +  hours + ':' + minutes + ':' + seconds + ' on ' +  month + '/' + day + '/' + year + '</i></body> </html>'
 }
 
 app.get('/', function(req, res){ //shows on webpage: intro text, each service's text, timestamp
-  theWebPage = "<html> <head> <hl>Hello DYD?</hl> </head><br> <body> <pre>Hello. Welcome to Hello DYD? This site will let you know whether the DYD services are availble.</pre> <br>";
+  theWebPage = "<html><hl><b>Hello DYD?</b></hl><br> <body><tt>Hello. Welcome to Hello DYD? This site will let you know whether the DYD services are availble.</tt><br>";
   services.forEach(addServiceText);
   addTimeStamp();
   res.send(theWebPage);
@@ -68,14 +68,14 @@ function tickle(theservice) //when a service is down: sends email, send error co
     from: "Hello DYD!", // sender address
     to: "alyssalew2@gmail.com", // list of receivers
     subject: "Alert from " + theservice[0], // Subject line
-    html: "<p>Service " + theservice[0] + " might be down! Oh no!", // html body
+    html: "<p>The service <b>" + theservice[0] + "</b> might be down! Oh no!", // html body
     generateTextFromHTML: true,
   }
  
   https.get(params, function(res) {
    theservice[4]=res.statusCode;
  }).on('error', function(e) {
-     console.log("Error on  " + theservice[0] + ":" +  e.message);
+     console.log("Error on  " + theservice[0] + ": " +  e.message);
      theservice[4]=e.message;
      smtpTransport.sendMail(mailOptions, function(error, response){
       if(error){
