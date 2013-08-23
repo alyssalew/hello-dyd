@@ -41,7 +41,7 @@ function addServiceText(theservice) //this specifies what service text should be
 function addTimeStamp() //this defines what time text should included on the webpage
 {
   theWebPage += "<br>";
-  theWebPage += '<br> Last test done at: <i>' +  hours + ':' + minutes + ':' + seconds + ' on ' +  month + '/' + day + '/' + year + 'GMT </i>' ;
+  theWebPage += '<br> Last test done at: <i>' +  hours + ':' + minutes + ':' + seconds + ' on ' +  month + '/' + day + '/' + year + ' GMT </i>' ;
   rightNow = new Date().getTime();
   secondsAgo = (rightNow - generatedTime) / 1000;
   theWebPage += ' <b> which was ' + Math.round(secondsAgo) + ' seconds ago ';
