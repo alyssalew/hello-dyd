@@ -1,5 +1,5 @@
 //These variables will be set every time the loop is run, so that we can show the latest run time
-var hours,minutes,seconds,day,month,year;
+var hours,minutes,seconds,day,month,year,generatedTime;
 var loopinterval = 60000; //microseconds: how often do we check the servers
 var express = require('express');
 var app = express();
@@ -41,7 +41,11 @@ function addServiceText(theservice) //this specifies what service text should be
 function addTimeStamp() //this defines what time text should included on the webpage
 {
   theWebPage += "<br>";
-  theWebPage += '<br> Last test done at: <i>' +  hours + ':' + minutes + ':' + seconds + ' on ' +  month + '/' + day + '/' + year + '</i></body> </html>'
+  theWebPage += '<br> Last test done at: <i>' +  hours + ':' + minutes + ':' + seconds + ' on ' +  month + '/' + day + '/' + year + 'GMT </i>' ;
+  rightNow = new Date().getTime();
+  secondsAgo = (rightNow - generatedTime) / 1000;
+  theWebPage += ' <b> which was ' + Math.round(secondsAgo) + ' seconds ago ';
+  theWebPage += '</body> </html>';
 }
 
 app.get('/', function(req, res){ //shows on webpage: intro text, each service's text, timestamp
@@ -100,7 +104,12 @@ function setTime() //gets the current date and time
  {
    minutes = '0' + minutes;
  }
+ if (hours < 10)
+ {
+   hours= '0' + hours;
+ }
  seconds = currentTime.getSeconds();
+ generatedTime = currentTime.getTime();
 }
 
 function checkHosts() //checks all the services
