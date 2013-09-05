@@ -1,6 +1,6 @@
 //These variables will be set every time the loop is run, so that we can show the latest run time
 var hours,minutes,seconds,day,month,year,generatedTime;
-var loopinterval = 60000; //microseconds: how often do we check the servers
+var loopinterval = 600000; //microseconds: how often do we check the servers
 var express = require('express');
 var app = express();
 var http = require("http");
