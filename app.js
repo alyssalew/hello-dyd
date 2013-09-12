@@ -17,8 +17,8 @@ var services = [ //defines the array 'services' as many arrays
   ['Lung Test','lungtest.dyd.cancercommons.org', 443, '/index.html'],
   ['Melanoma Test','melanomatest.dyd.cancercommons.org', 443,'/index.html'],
   ['Lung Live','lung.dyd.cancercommons.org', 443, '/index.html'],
-  ['Melanoma Live','melanoma.dyd.cancercommons.org', 443 ,'/index.html']
-  ['Lung Stage','lung-stage.dyd.cancercommons.org', 443 ,'/index.html']
+  ['Melanoma Live','melanoma.dyd.cancercommons.org', 443 ,'/index.html'],
+  ['Lung Stage','lung-stage.dyd.cancercommons.org', 443 ,'/index.html'],
   ['Melanoma Stage','melanoma-stage.dyd.cancercommons.org', 443 ,'/index.html']
 ];
 var recipients= ['alyssalew2@gmail.com', ];//defines who will recive email alerts
